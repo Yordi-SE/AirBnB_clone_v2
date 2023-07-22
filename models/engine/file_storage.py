@@ -1,16 +1,19 @@
 #!/usr/bin/python3
-"""This module defines a class to manage file storage for hbnb clone"""
+"""This module defines a class to manage file storage for hbnb clone
+"""
 import json
 import copy
 
 
 class FileStorage:
-    """This class manages storage of hbnb models in JSON format"""
+    """This class manages storage of hbnb models in JSON format
+    """
     __file_path = 'file.json'
     __objects = {}
 
     def all(self, cls=None):
-        """Returns a dictionary of models currently in storage"""
+        """Returns a dictionary of models currently in storage
+        """
         if cls:
             my_dict = copy.deepcopy(FileStorage.__objects)
             for key, val in FileStorage.__objects.items():
@@ -20,12 +23,14 @@ class FileStorage:
         return FileStorage.__objects
 
     def new(self, obj):
-        """Adds new object to storage dictionary"""
+        """Adds new object to storage dictionary
+        """
         key = obj.__class__.__name__ + '.' + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Saves storage dictionary to file"""
+        """Saves storage dictionary to file
+        """
         with open(FileStorage.__file_path, 'w') as f:
             temp = {}
             temp.update(FileStorage.__objects)
@@ -34,7 +39,8 @@ class FileStorage:
             json.dump(temp, f)
 
     def reload(self):
-        """Loads storage dictionary from file"""
+        """Loads storage dictionary from file
+        """
         from models.base_model import BaseModel
         from models.user import User
         from models.place import Place
@@ -58,8 +64,11 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        """this method delete obj
+        from __objects
+        """
         if obj:
             for key, val in self.__objects.items():
-                if val == obj:
+                if val is obj:
                     del FileStorage.__objects[key]
                     break
