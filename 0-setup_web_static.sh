@@ -16,7 +16,7 @@ if [ ! -d "/data/web_static/shared/" ];
 then
 	sudo mkdir -p "/data/web_static/shared/"
 fi
-mkdir -p /data/web_static/releases
+
 if [ ! -d "/data/web_static/releases/test/" ];
 then
 	sudo mkdir -p "/data/web_static/releases/test/"
@@ -40,9 +40,8 @@ then
 	rm -f "/data/web_static/current"
 fi
 ln -s "/data/web_static/releases/test/" "/data/web_static/current"
-hostname="$hostname"
 config=\
-"
+'
 server {
         listen 80 default_server;
         listen [::]:80 default_server;
@@ -62,7 +61,7 @@ server {
 		alias /data/web_static/current/;
 	}
 }
-"
+'
 sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
 echo "$config" > /etc/nginx/sites-available/default
 sudo service nginx restart
