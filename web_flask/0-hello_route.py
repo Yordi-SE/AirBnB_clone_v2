@@ -1,10 +1,15 @@
 #!/usr/bin/python3
+"""Flask web application framework
+"""
 from flask import Flask
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
 def Hello():
+    """This is the view
+    function
+    """
     return 'Hello HBNB!'
 
 
