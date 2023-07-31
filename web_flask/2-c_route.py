@@ -22,7 +22,7 @@ def hbnb():
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c_route():
+def c_route(text):
     """This is the third
     view function
     """
