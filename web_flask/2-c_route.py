@@ -26,7 +26,7 @@ def c_route(text):
     """This is the third
     view function
     """
-    text.replace('_', " ")
+    text = text.replace('_', " ")
     return render_template('c_route.html', text=text)
 
 
